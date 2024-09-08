@@ -1,0 +1,22 @@
+.capture-img {
+  padding: 10px;
+  margin-top: 10px;
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+}
+  
+.capture-img .img-ipt {
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+
+.capture-img .result-area {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.result-area {
+  width: 25%;
+  margin: 0 auto 0 auto;
+  border-bottom: 1px solid forestgreen;
+}
