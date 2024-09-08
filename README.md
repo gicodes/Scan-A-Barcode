@@ -1,47 +1,135 @@
-# Getting Started with Create React App
+# SCAN-A-BARCODE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+    This React application allows users to scan barcodes using either their device's camera in real-time or by selecting images containing barcodes from their device storage. The app consists of two main components:
 
-In the project directory, you can run:
+- `VideoCapture` for live video scanning.
+- `ImageCapture` for scanning barcodes from images.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of Contents
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Setup and Installation
 
-### `npm test`
+2. Component Breakdown
+    1. VideoCapture Component
+    2. ImageCapture Component
+    3. App Component
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Configuration
+    - dynamsoft config
+    - .env file
 
-### `npm run build`
+4. How to Use
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Error Handling
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. Conclusion
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Setup and Installation
+1. Clone the Repository
+    git clone https://github.com/gicodes/scan-a-barcode && cd scan-a-barcode
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install Dependencies
+    npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. Create the .env File: Create a .env file in the root directory and add your Dynamsoft license key:
+    `REACT_APP_DYNAMSOFT_LICENSE_KEY=YOUR_DYNAMSOFT_LICENSE_KEY`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Start the Application
+    `npm start`
+    The app will be accessible on `http://localhost:3000`
+    
 
-## Learn More
+## Component Breakdown
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. VideoCapture Component: `src/video/video-capture.tsx`
+    This component enables real-time barcode scanning using the device's camera.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# scan-a-barcode
+    ### Key Functions:
+
+    **initializeVideoCapture** initializes the camera and barcode scanning functionality using dynamsoft-camera-enhancer and dynamsoft-capture-vision-router.
+
+    **handleDecodedBarcodes** processes and displays the decoded barcode results.
+
+    **toggleCamera** toggles the camera on or off, based on user interaction.
+
+    **Error Handling** handles errors such as initialization failures or decoding issues are caught and displayed to the user.
+
+    **UI Elements:**
+    - Button to start/stop the camera.
+    - Display Container area for the camera feed.
+    - Results Area section that shows decoded barcode information.
+
+2. ImageCapture Component: `src/image/image-capture.tsx`
+    This component allows users to upload images from their device for barcode detection.
+
+    ### Key Functions:
+
+    **captureImage** handles the file input change event, initializes the barcode scanning process, and displays results.
+
+    **Error Handling** catches and handles errors related to image decoding or processing.
+    
+    **UI Elements:**
+    - File input to select multiple images.
+    - Results Area to display decoded barcode information.
+
+3. App Component: `src/App.tsx`
+    The main application component that manages the UI and allows users to switch between video capture and image capture modes.
+
+    #### Key Functions:
+
+    **handleVideoChange** activates the video capture mode.
+
+    **handleImageChange** activates the image capture mode.
+
+    **UI Elements:**
+    - Header with buttons to toggle between video and image capture modes.
+    - Conditional rendering of VideoCapture or ImageCapture components based on the user's choice.
+
+
+## Configuration
+    
+1. Create or copy a file named `dynamsoft.config.js` in the src directory. This file is responsible for setting up the Dynamsoft license and configuring module paths
+
+2. Make sure to create a .env file in your root directory and add your Dynamsoft license key;
+    REACT_APP_DYNAMSOFT_LICENSE_KEY='YOUR_DYNAMSOFT_LICENSE_KEY'
+
+    Replace YOUR_DYNAMSOFT_LICENSE_KEY with the actual license key obtained from Dynamsoft's License Center.
+
+
+## How To Use
+
+1. Start the Application (I've already stated how to run this app).
+
+2. Select the Capture Mode:
+    - Click "Video Capture" to start the camera and scan barcodes in real-time.
+    - Click "Image Capture" to select images from your device for barcode scanning.
+
+3. View Results: The decoded barcode results will be displayed under the "Results" section in each mode.
+
+
+## Error Handling
+
+    Both components (VideoCapture and ImageCapture) have error-handling mechanisms to:
+        - Catch exceptions during initialization or processing.
+        - Display errors to the user using alerts and console messages.
+
+
+## Dependencies
+
+- `dynamsoft-camera-enhancer`: For accessing and managing the camera feed.
+- `dynamsoft-capture-vision-router`: For barcode detection and processing.
+- `dynamsoft-core`: Core utilities required for barcode scanning.
+
+Make sure to install these dependencies by running:
+    `npm install dynamsoft-camera-enhancer dynamsoft-capture-vision-router dynamsoft-core`
+
+
+## Conclusion
+
+    This application provides a flexible and efficient way to scan barcodes either through real-time camera feeds or by processing static images. The modular design allows easy extension and integration with additional features, such as support for more barcode types or enhanced user interface elements.
