@@ -7,18 +7,14 @@ import './App.css';
 function App() {
   const [ video, setVideo ] = useState(true);
   const [ image, setImage ] = useState(false);
-  const bgStyle = "rgb(255, 174, 55)";
+  const btnBgStyle = "rgb(255, 174, 55)";
 
   const handleVideoChange = () => {
-    if (image) {
-      setVideo(true); setImage(false);
-    }
+    if (image) setVideo(true); setImage(false);
   };
 
   const handleImageChange = () => {
-    if (video) {
-      setImage(true); setVideo (false);
-    } 
+    if (video) setImage(true); setVideo (false);
   }
 
   return (
@@ -26,19 +22,18 @@ function App() {
       <header className="App-header h-50">
         <h1>Scan a barcode</h1>
         <br/>
-
         <div className='top-btns'>
           <button 
             className='scan-btn'
             onClick={handleVideoChange} 
-            style={{backgroundColor: video ? bgStyle : "#fff"}}
+            style={{backgroundColor: video ? btnBgStyle : "#fff"}}
           >
             Video Capture
           </button>
           <button 
             className='scan-btn'
             onClick={handleImageChange} 
-            style={{backgroundColor: image ? bgStyle : "#fff"}}
+            style={{backgroundColor: image ? btnBgStyle : "#fff"}}
           >
             Image Capture
           </button>

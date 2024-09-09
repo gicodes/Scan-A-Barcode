@@ -31,11 +31,11 @@
 
 
 ## Setup and Installation
-1. Clone the Repository
-    git clone https://github.com/gicodes/scan-a-barcode && cd scan-a-barcode
+1. Clone the Repository:
+    run `git clone https://github.com/gicodes/scan-a-barcode && cd scan-a-barcode`
 
-2. Install Dependencies
-    npm install
+2. Install Dependencies:
+    run `npm install`
 
 3. Create the .env File: Create a .env file in the root directory and add your Dynamsoft license key:
     `REACT_APP_DYNAMSOFT_LICENSE_KEY=YOUR_DYNAMSOFT_LICENSE_KEY`
